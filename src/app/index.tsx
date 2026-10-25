@@ -1,12 +1,14 @@
+import { router } from "expo-router";
 import { useState } from "react";
 import {
+  Alert,
   KeyboardAvoidingView,
   Platform,
   SafeAreaView,
   StyleSheet,
   Text,
+  TouchableOpacity,
 } from "react-native";
-
 import type { Band } from "../../Types/Band";
 import BandForm from "../components/BandForm";
 import BandList from "../components/BandList";
@@ -16,6 +18,7 @@ export default function Index() {
 
   const addBand = (title: string, description: string) => {
     if (!title || !description) {
+      Alert.alert("Error", "Please provide both title and description.");
       return;
     }
 
@@ -31,7 +34,20 @@ export default function Index() {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.header}>My Favorite Bands 🎸</Text>
-
+      <TouchableOpacity
+        onPress={() => router.push("/todos")}
+        style={{
+          backgroundColor: "#b91c1c",
+          padding: 15,
+          margin: 16,
+          borderRadius: 10,
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ color: "white", fontWeight: "bold" }}>
+          Open Todo List
+        </Text>
+      </TouchableOpacity>
       <KeyboardAvoidingView
         style={styles.content}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
