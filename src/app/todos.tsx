@@ -10,7 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 
 import TodoCard, { Todo } from '../components/TodoCard';
 
-async function fetchTodos(): Promise<Todo[]> {
+async function fetchTodos() {
   const response = await fetch(
     'https://jsonplaceholder.typicode.com/todos'
   );
