@@ -46,7 +46,7 @@ export default function TodosScreen() {
     setModalVisible(true);
   }
 
-  // Todo-ს განახლება
+  
   function updateTodo() {
     if (!selectedTodo) return;
 
