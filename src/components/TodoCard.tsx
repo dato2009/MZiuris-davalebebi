@@ -1,5 +1,4 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export type Todo = {
   userId: number;
@@ -8,57 +7,41 @@ export type Todo = {
   completed: boolean;
 };
 
-type TodoCardProps = {
+type Props = {
   item: Todo;
+  onPress: () => void;
 };
 
-export default function TodoCard({ item }: TodoCardProps) {
+export default function TodoCard({ item, onPress }: Props) {
   return (
-    <View style={styles.card}>
-      <Text style={styles.id}>Todo #{item.id}</Text>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.card}>
+        <Text style={styles.title}>{item.title}</Text>
 
-      <Text style={styles.title}>{item.title}</Text>
-
-      <Text
-        style={[
-          styles.status,
-          item.completed ? styles.completed : styles.pending,
-        ]}
-      >
-        {item.completed ? 'Completed ' : 'Not completed'}
-      </Text>
-    </View>
+        <Text style={item.completed ? styles.done : styles.pending}>
+          {item.completed ? "Completed ✓" : "Not completed"}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#292929',
+    backgroundColor: "#292929",
     padding: 18,
     marginBottom: 12,
     borderRadius: 12,
-    borderWidth: 1,
-    borderColor: '#444',
-  },
-  id: {
-    color: '#aaa',
-    fontSize: 13,
-    marginBottom: 8,
   },
   title: {
-    color: '#fff',
+    color: "white",
     fontSize: 17,
-    marginBottom: 12,
-    textTransform: 'capitalize',
+    marginBottom: 10,
   },
-  status: {
-    fontSize: 14,
-    fontWeight: 'bold',
-  },
-  completed: {
-    color: '#4ade80',
+  done: {
+    color: "#4ade80",
   },
   pending: {
-    color: '#facc15',
+    color: "#facc15",
   },
 });
