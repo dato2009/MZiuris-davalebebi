@@ -9,9 +9,9 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import type { Band } from "../../Types/Band";
-import BandForm from "../components/BandForm";
-import BandList from "../components/BandList";
+import type { Band } from "../../../Types/Band";
+import BandForm from "../../components/BandForm";
+import BandList from "../../components/BandList";
 
 export default function Index() {
   const [bands, setBands] = useState<Band[]>([]);
